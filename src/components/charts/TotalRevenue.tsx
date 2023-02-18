@@ -21,7 +21,7 @@ const TotalRevenue = () => {
                         0.8%
                     </Typography>
                     <Typography fontSize={12} color="#808191">
-                        0.8%
+                        Thank Last Month
                     </Typography>
                 </Stack>
             </Stack>
