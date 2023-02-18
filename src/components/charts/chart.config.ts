@@ -1,62 +1,61 @@
-/* eslint-disable no-plusplus */
-import { FormValues } from 'interfaces/property';
+import { ApexOptions } from "apexcharts";
 
-export const validateForm = (formValues: FormValues) => {
-  const errors: { message: string } = { message: '' };
-  let hasError = false;
+export const TotalRevenueSeries = [
+    {
+        name: "Last Month",
+        data: [183, 124, 115, 85, 143, 143, 96],
+    },
+    {
+        name: "Running Month",
+        data: [95, 84, 72, 44, 108, 108, 47],
+    },
+];
 
-  Object.keys(formValues).forEach((key) => {
-    switch (key) {
-      case 'title':
-        if (!formValues.title) {
-          errors.message = 'Title is required';
-          hasError = true;
-        }
-        break;
-
-      case 'description':
-        if (!formValues.description) {
-          errors.message = 'Description is required';
-          hasError = true;
-        }
-        break;
-
-      case 'propertyType':
-        if (!formValues.propertyType) {
-          errors.message = 'Property type is required';
-          hasError = true;
-        }
-        break;
-
-      case 'location':
-        if (!formValues.location) {
-          errors.message = 'Location is required';
-          hasError = true;
-        }
-        break;
-
-      case 'price':
-        if (!formValues.price) {
-          errors.message = 'Price is required';
-          hasError = true;
-        }
-        break;
-
-      default:
-        hasError = false;
-    }
-  });
-
-  return { hasError, errors };
-};
-
-export const hasChanged = (initialValues: FormValues, currentValues: FormValues) => {
-  const initialValuesArray = Object.values(initialValues);
-  const currentValuesArray = Object.values(currentValues);
-  for (let i = 0; i < initialValuesArray.length; i++) {
-    if (initialValuesArray[i] !== currentValuesArray[i]) {
-      return true;
-    }
-  }
-  return false;
+export const TotalRevenueOptions: ApexOptions = {
+    chart: {
+        type: "bar",
+        toolbar: {
+            show: false,
+        },
+    },
+    colors: ["#475BE8", "#CFC8FF"],
+    plotOptions: {
+        bar: {
+            borderRadius: 4,
+            horizontal: false,
+            columnWidth: "55%",
+        },
+    },
+    dataLabels: {
+        enabled: false,
+    },
+    grid: {
+        show: false,
+    },
+    stroke: {
+        colors: ["transparent"],
+        width: 4,
+    },
+    xaxis: {
+        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+    },
+    yaxis: {
+        title: {
+            text: "$ (thousands)",
+        },
+    },
+    fill: {
+        opacity: 1,
+    },
+    legend: {
+        position: "top",
+        horizontalAlign: "right",
+    },
+    tooltip: {
+        y: {
+            formatter(val: number) {
+                return `$ ${val} thousands`;
+            },
+        },
+    },
 };
