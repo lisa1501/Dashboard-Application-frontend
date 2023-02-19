@@ -33,7 +33,7 @@ const PropertyDetails = () => {
     if(isError) return <div>Error</div>
     console.log(user.email)
     console.log(propertyDetails)
-    const isCurrentUser = user.email === propertyDetails.creater.email;
+    const isCurrentUser = user.email === propertyDetails.creater[0].email;
 
     const handleDeleteProperty = () => {
         // eslint-disable-next-line no-restricted-globals
@@ -197,9 +197,9 @@ const PropertyDetails = () => {
                         >
                             <img
                                 src={
-                                    checkImage(propertyDetails.creater
+                                    checkImage(propertyDetails.creater[0]
                                         .avatar)
-                                        ? propertyDetails.creater
+                                        ? propertyDetails.creater[0]
                                         .avatar
                                         : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png"
                                 }
@@ -218,7 +218,7 @@ const PropertyDetails = () => {
                                     fontWeight={600}
                                     color="#11142D"
                                 >
-                                    {propertyDetails.creater
+                                    {propertyDetails.creater[0]
                                     .name}
                                 </Typography>
                                 <Typography
@@ -253,7 +253,7 @@ const PropertyDetails = () => {
                                 fontWeight={600}
                                 color="#11142D"
                             >
-                                {propertyDetails.creater
+                                {propertyDetails.creater[0]
                                 .allProperties.length}{" "}
                                 Properties
                             </Typography>
