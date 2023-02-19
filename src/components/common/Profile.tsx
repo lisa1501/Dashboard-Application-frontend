@@ -161,7 +161,7 @@ const Profile = ({ type, name, avatar, email, properties }: ProfileProps)  => {
                 </Box>
             </Box>
         </Box>
-
+        
 
     </Box>
     )
